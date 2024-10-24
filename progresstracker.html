@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <title>Calculator</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   </head>
+   <body>
+      <style>
+         .btn-primary {
+    background-color: black;  
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;  
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #333;  
+}
+      </style>
+      
+   <div class="header_section">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+         <div class="logo"><a href="index.html"><img width="48" height="48" src="https://img.icons8.com/doodle/48/clinic.png" alt="clinic"/></a></div>
+         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+               <li class="nav-item active">
+                   <a class="nav-link" href="index.html">Home</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="health.html">Finders</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="medicine.html">Tracker</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="calculuaotr1.html">Calculate</a>
+               </li>
+               <li class="nav-item">
+                <a class="nav-link" href="systemchecker.html">Symptoms</a>
+                </li>
+            </li>
+            <li class="nav-item">
+             <a class="nav-link" href="progresstracker.html">Goals</a>
+             </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="contact.html">Learn</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="app.html">Mobile</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="login.html">Join</a>
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="#"><img src="images/search-icon.png"></a>
+               </li>
+           </ul>
+         </div>
+      </nav>
+
+ <div class="client_section layout_padding margin_90" style="background-color: #ffffff; padding: 60px 40px;">
+   <div class="container">
+       <div class="text-center animate-fade-in" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+          <div style="flex-grow: 1; text-align: center;">
+            <h1 class="client_taital" style="font-size: 3.2em; color: #000;">
+               <span style="color: #000;"> Health</span> 
+               <span style="color: #1becde;">Progress</span> 
+           </h1>
+           
+            <p class="client_text" style="font-size: 1.2em; color: #333;">     The FreePharmacy helps you stay on top of your health goals with seamless task management and progress checks. Our intuitive platform allows you to set health goals, track your progress, and receive personalized reminders—all at your fingertips. Whether you're tracking medication, monitoring daily habits, or achieving wellness milestones, FreePharmacy makes it easier to manage your tasks and check your progress on-the-go.  </p>
+         </div>         
+      </div>
+      &nbsp;
+    &nbsp;
+
+      <style>
+         body {
+            font-family: Arial, sans-serif;
+         }
+         .goal-tracker {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+         }
+         .goal-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+         }
+         .btn-primary {
+            background-color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+         }
+         .btn-primary:hover {
+            background-color: #333;
+         }
+         .goal-progress {
+            margin-top: 10px;
+         }
+      </style>
+   </head>
+   <body>
+
+    <div class="goal-tracker"> 
+        <form id="goalForm">
+            <div class="form-group">
+                <label for="goal">Set Your Health Goal:</label>
+                <input type="text" id="goal" class="form-control" placeholder="e.g., Drink 2 liters of water daily" required>
+            </div>
+            <div class="form-group">
+                <label for="targetAmount">Target Amount:</label>
+                <input type="number" id="targetAmount" class="form-control" placeholder="e.g., 2 (liters, kg, etc.)" required>
+            </div>
+            <div class="form-group">
+                <label for="progressAmount">Your Current Progress:</label>
+                <input type="number" id="progressAmount" class="form-control" placeholder="Enter current progress" required>
+            </div>
+            <div class="form-group">
+                <label for="goalType">Goal Type:</label>
+                <select id="goalType" class="form-control" required>
+                    <option value="water">Water Intake</option>
+                    <option value="weight">Weight Loss</option>
+                    <option value="exercise">Exercise</option>
+                    <option value="custom">Custom Goal</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="deadline">Set Deadline:</label>
+                <input type="date" id="deadline" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Set Goal</button>
+        </form>
+     
+        <h3 class="mt-4">Your Goals</h3>
+        <div id="goalList"></div>
+        <h4>Statistics Overview</h4>
+        <p id="statsOverview"></p>
+    
+         <div class="modal fade" id="editGoalModal" tabindex="-1" role="dialog" aria-labelledby="editGoalModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editGoalModalLabel">Edit Goal</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editGoalForm">
+                            <div class="form-group">
+                                <label for="editGoal">Goal:</label>
+                                <input type="text" id="editGoal" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editTargetAmount">Target Amount:</label>
+                                <input type="number" id="editTargetAmount" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editProgressAmount">Progress:</label>
+                                <input type="number" id="editProgressAmount" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const goalForm = document.getElementById('goalForm');
+            const goalListDiv = document.getElementById('goalList');
+            const statsOverview = document.getElementById('statsOverview');
+    
+            let goalList = JSON.parse(localStorage.getItem('goalList')) || [];
+            let currentEditIndex = null;
+    
+             function displayGoals() {
+                goalListDiv.innerHTML = '';
+                if (goalList.length === 0) {
+                    goalListDiv.innerHTML = '<p>No goals set yet.</p>';
+                    statsOverview.innerHTML = 'Total Goals: 0 | Completed Goals: 0 | Overall Progress: 0%';
+                    return;
+                }
+    
+                let completedGoals = 0;
+                let totalProgress = 0;
+    
+                goalList.forEach((goalItem, index) => {
+                    const progressPercentage = ((goalItem.progressAmount / goalItem.targetAmount) * 100).toFixed(1);
+                    const goalStatus = goalItem.completed ? 'Completed' : 'In Progress';
+                    const isOverdue = new Date(goalItem.deadline) < new Date() && !goalItem.completed;
+    
+                    const goalElement = document.createElement('div');
+                    goalElement.classList.add('goal-item', 'border', 'p-3');
+                    goalElement.innerHTML = `
+                        <h4>${goalItem.goal} 
+                            <button class="btn btn-secondary btn-sm" onclick="toggleComplete(${index})">${goalItem.completed ? 'Undo' : 'Complete'}</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteGoal(${index})">Delete</button>
+                            <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#editGoalModal" onclick="editGoal(${index})">Edit</button>
+                        </h4>
+                        <p>Goal Type: ${goalItem.goalType} | Date Set: ${goalItem.dateSet} | Deadline: ${goalItem.deadline}</p>
+                        <p>Target: ${goalItem.targetAmount} | Progress: ${goalItem.progressAmount} (${progressPercentage}% completed)</p>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: ${progressPercentage}%;"
+                                 aria-valuenow="${progressPercentage}" aria-valuemin="0" aria-valuemax="100">${progressPercentage}%</div>
+                        </div>
+                    `;
+    
+                    goalListDiv.appendChild(goalElement);
+                    
+                    if (goalItem.completed) {
+                        completedGoals++;
+                    }
+                    totalProgress += goalItem.progressAmount;
+                });
+    
+                const totalGoals = goalList.length;
+                const overallProgress = (totalProgress / totalGoals).toFixed(1) || 0;
+                statsOverview.innerHTML = `Total Goals: ${totalGoals} | Completed Goals: ${completedGoals} | Overall Progress: ${overallProgress}%`;
+            }
+    
+             goalForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const goal = document.getElementById('goal').value;
+                const targetAmount = parseFloat(document.getElementById('targetAmount').value);
+                const progressAmount = parseFloat(document.getElementById('progressAmount').value);
+                const goalType = document.getElementById('goalType').value;
+                const deadline = document.getElementById('deadline').value;
+    
+                const goalData = {
+                    goal: goal,
+                    targetAmount: targetAmount,
+                    progressAmount: progressAmount,
+                    goalType: goalType,
+                    dateSet: new Date().toLocaleDateString(),
+                    deadline: deadline,
+                    completed: false
+                };
+    
+                goalList.push(goalData);
+                localStorage.setItem('goalList', JSON.stringify(goalList));
+                displayGoals();
+                goalForm.reset();
+            });
+    
+             window.toggleComplete = (index) => {
+                goalList[index].completed = !goalList[index].completed;
+                localStorage.setItem('goalList', JSON.stringify(goalList));
+                displayGoals();
+            };
+    
+             window.editGoal = (index) => {
+                currentEditIndex = index;
+                const goal = goalList[index];
+    
+                document.getElementById('editGoal').value = goal.goal;
+                document.getElementById('editTargetAmount').value = goal.targetAmount;
+                document.getElementById('editProgressAmount').value = goal.progressAmount;
+            };
+    
+             const editGoalForm = document.getElementById('editGoalForm');
+            editGoalForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const updatedGoal = {
+                    goal: document.getElementById('editGoal').value,
+                    targetAmount: parseFloat(document.getElementById('editTargetAmount').value),
+                    progressAmount: parseFloat(document.getElementById('editProgressAmount').value),
+                    goalType: goalList[currentEditIndex].goalType,
+                    dateSet: goalList[currentEditIndex].dateSet,
+                    deadline: goalList[currentEditIndex].deadline,
+                    completed: goalList[currentEditIndex].completed
+                };
+    
+                goalList[currentEditIndex] = updatedGoal;
+                localStorage.setItem('goalList', JSON.stringify(goalList));
+                displayGoals();
+                $('#editGoalModal').modal('hide');
+            });
+    
+             window.deleteGoal = (index) => {
+                if (confirm('Are you sure you want to delete this goal?')) {
+                    goalList.splice(index, 1);
+                    localStorage.setItem('goalList', JSON.stringify(goalList));
+                    displayGoals();
+                }
+            };
+    
+            displayGoals();
+        });
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+    </html>
+    

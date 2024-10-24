@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <title>Calculator</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   </head>
+   <body>
+      <style>
+         .btn-primary {
+    background-color: black;  
+    border: none;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #fff;  
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #333;  
+}
+      </style>
+      
+      <div class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+           <div class="logo"><a href="index.html"><img width="48" height="48" src="https://img.icons8.com/doodle/48/clinic.png" alt="clinic"/></a></div>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                 <li class="nav-item active">
+                     <a class="nav-link" href="index.html">Home</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="health.html">Finders</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="medicine.html">Tracker</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="calculuaotr1.html">Calculate</a>
+                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="systemchecker.html">Symptoms</a>
+                  </li>
+              </li>
+              <li class="nav-item">
+               <a class="nav-link" href="progresstracker.html">Goals</a>
+               </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="contact.html">Learn</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="app.html">Mobile</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="login.html">Join</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#"><img src="images/search-icon.png"></a>
+                 </li>
+             </ul>
+           </div>
+        </nav>
+
+ <div class="client_section layout_padding margin_90" style="background-color: #ffffff; padding: 60px 40px;">
+   <div class="container">
+       <div class="text-center animate-fade-in" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+          <div style="flex-grow: 1; text-align: center;">
+            <h1 class="client_taital" style="font-size: 3.2em; color: #000;">
+               <span style="color: #000;">Body Mass Index (BMI) </span> 
+               <span style="color: #1becde;">Calculator</span> 
+           </h1>
+           
+            <p class="client_text" style="font-size: 1.2em; color: #333;">The FreePharmacy website provides convenient access to healthcare services, insurance details, and personalized health tips—all from your device. With our user-friendly platform, managing your health has never been easier, allowing you to stay informed and on track, wherever you are. <br></br>
+                Disclaimer: While BMI can offer a general indication of health based on weight and height, it doesn’t account for other important factors such as muscle mass, bone density, or overall body composition. It should not be used as a definitive measure of health or to diagnose any condition. Always consult a healthcare professional for a more comprehensive evaluation. </p>
+         </div>         
+      </div>
+      &nbsp;
+      <div style="text-align: center;">
+        <img src="images/creative-vector-illustration-bmi-body-mass-index-infographic-chart-silhouettes-scale-isolated-transparent-131524404.webp" alt="bmi">
+    </div>
+    &nbsp;
+
+<div class="container">
+    <div class="tracker">
+        <form id="bmiForm">
+            <div class="form-group">
+                <label for="weight">Weight (kg)</label>
+                <input type="number" id="weight" class="form-control" placeholder="Enter your weight in kilograms" required>
+            </div>
+            <div class="form-group">
+                <label for="height">Height (cm)</label>
+                <input type="number" id="height" class="form-control" placeholder="Enter your height in centimeters" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select id="gender" class="form-control" required>
+                    <option value="">Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="age">Age (years)</label>
+                <input type="number" id="age" class="form-control" placeholder="Enter your age in years" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate BMI</button>
+        </form>
+
+        <div id="bmiResult" class="bmi-result alert alert-info mt-3" role="alert"></div>
+    </div>
+
+    <div class="calendar">
+        <h2>BMI History</h2>
+        <div id="bmiHistory" class="history-list"></div>
+    </div>
+</div>
+
+<div class="container">
+    <h2>BMI Progress Graph</h2>
+    <canvas id="bmiChart"></canvas>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+       const form = document.getElementById('bmiForm');
+       const weightInput = document.getElementById('weight');
+       const heightInput = document.getElementById('height');
+       const genderInput = document.getElementById('gender');
+       const ageInput = document.getElementById('age');
+       const bmiResultDiv = document.getElementById('bmiResult');
+       const bmiHistoryDiv = document.getElementById('bmiHistory');
+
+
+       let bmiHistory = JSON.parse(localStorage.getItem('bmiHistory')) || [];
+
+
+       form.addEventListener('submit', (e) => {
+           e.preventDefault();
+           const weight = parseFloat(weightInput.value);
+           const height = parseFloat(heightInput.value) / 100;  
+           const age = parseInt(ageInput.value);
+           const gender = genderInput.value;
+
+
+           const bmi = (weight / (height * height)).toFixed(2);
+
+
+           let classification = '';
+           let dietTips = '';
+           let exerciseTips = '';
+
+
+            if (bmi < 18.5) {
+               classification = 'Underweight';
+               dietTips = 'Focus on calorie-dense, nutritious foods like avocados, nuts, and lean proteins. Increase healthy fat intake.';
+               exerciseTips = 'Try strength training exercises to build muscle mass and improve overall fitness.';
+           } else if (bmi >= 18.5 && bmi < 24.9) {
+               classification = 'Normal weight';
+               dietTips = 'Maintain a balanced diet rich in fruits, vegetables, whole grains, and lean proteins.';
+               exerciseTips = 'Aim for a mix of cardio and strength training to maintain your current weight and improve overall fitness.';
+           } else if (bmi >= 25 && bmi < 29.9) {
+               classification = 'Overweight';
+               dietTips = 'Focus on portion control and reducing calorie intake. Incorporate more fiber-rich foods like vegetables and whole grains.';
+               exerciseTips = 'Include at least 150 minutes of moderate aerobic exercise weekly, such as brisk walking or cycling.';
+           } else {
+               classification = 'Obese';
+               dietTips = 'Focus on a low-calorie, nutrient-dense diet. Avoid sugary drinks and snacks, and eat more vegetables and lean proteins.';
+               exerciseTips = 'Begin with low-impact exercises like swimming or walking, gradually increasing the intensity as your fitness improves.';
+           }
+
+
+            const result = `Your BMI is ${bmi} (${classification})`;
+           bmiResultDiv.innerHTML = `
+               <p><strong>${result}</strong></p>
+               <p>Gender: ${gender}, Age: ${age} years</p>
+               <p><strong>Dietary Tips:</strong> ${dietTips}</p>
+               <p><strong>Exercise Tips:</strong> ${exerciseTips}</p>
+           `;
+           bmiResultDiv.style.display = 'block';
+
+
+           const bmiRecord = {
+               date: new Date().toLocaleDateString(),
+               bmi: bmi,
+               classification: classification,
+               gender: gender,
+               age: age
+           };
+
+
+           bmiHistory.push(bmiRecord);
+           localStorage.setItem('bmiHistory', JSON.stringify(bmiHistory));
+
+
+           displayBmiHistory();
+       });
+
+
+        function displayBmiHistory() {
+           bmiHistoryDiv.innerHTML = '';
+           if (bmiHistory.length === 0) {
+               bmiHistoryDiv.innerHTML = '<p>No BMI records yet.</p>';
+               return;
+           }
+
+
+           bmiHistory.forEach((record, index) => {
+               const historyItem = document.createElement('div');
+               historyItem.classList.add('medication-item');
+               historyItem.innerHTML = `
+                   <span>${record.date} - BMI: ${record.bmi} (${record.classification}), Gender: ${record.gender}, Age: ${record.age} years</span>
+                   <button class="delete-btn" data-index="${index}">Delete</button>
+               `;
+              
+               historyItem.querySelector('.delete-btn').addEventListener('click', (e) => {
+                   const recordIndex = e.target.getAttribute('data-index');
+                   bmiHistory.splice(recordIndex, 1);
+                   localStorage.setItem('bmiHistory', JSON.stringify(bmiHistory));
+                   displayBmiHistory();
+               });
+
+
+               bmiHistoryDiv.appendChild(historyItem);
+           });
+       }
+
+
+       displayBmiHistory();
+   });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const bmiChartCtx = document.getElementById('bmiChart').getContext('2d');
+        const bmiHistory = JSON.parse(localStorage.getItem('bmiHistory')) || [];
+
+         function updateBmiChart() {
+            const bmiData = bmiHistory.map(record => parseFloat(record.bmi));
+            const dates = bmiHistory.map(record => record.date);
+
+            const gradient = bmiChartCtx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(30, 200, 255, 0.8)');
+            gradient.addColorStop(1, 'rgba(30, 200, 255, 0)');
+
+            const chart = new Chart(bmiChartCtx, {
+                type: 'line',
+                data: {
+                    labels: dates,
+                    datasets: [{
+                        label: 'Your BMI',
+                        data: bmiData,
+                        borderColor: 'rgba(30, 200, 255, 0.8)',
+                        fill: true,
+                        backgroundColor: gradient,
+                        borderWidth: 3,
+                        pointStyle: 'circle',
+                        pointRadius: 5,
+                        pointHoverRadius: 7,
+                        tension: 0.4,  
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function(tooltipItem) {
+                                    return `Date: ${tooltipItem.label}, BMI: ${tooltipItem.raw}`;
+                                }
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            labels: {
+                                color: '#000',
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        annotation: {
+                            annotations: {
+                                underweight: {
+                                    type: 'box',
+                                    yMin: 0,
+                                    yMax: 18.5,
+                                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                                    borderColor: 'rgba(255, 99, 132, 1)',
+                                    label: {
+                                        content: 'Underweight',
+                                        enabled: true,
+                                        position: 'start',
+                                        backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                                        color: '#fff',
+                                    }
+                                },
+                                normal: {
+                                    type: 'box',
+                                    yMin: 18.5,
+                                    yMax: 24.9,
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    label: {
+                                        content: 'Normal',
+                                        enabled: true,
+                                        position: 'start',
+                                        backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                                        color: '#fff',
+                                    }
+                                },
+                                overweight: {
+                                    type: 'box',
+                                    yMin: 25,
+                                    yMax: 29.9,
+                                    backgroundColor: 'rgba(255, 206, 86, 0.2)',
+                                    borderColor: 'rgba(255, 206, 86, 1)',
+                                    label: {
+                                        content: 'Overweight',
+                                        enabled: true,
+                                        position: 'start',
+                                        backgroundColor: 'rgba(255, 206, 86, 0.8)',
+                                        color: '#fff',
+                                    }
+                                },
+                                obese: {
+                                    type: 'box',
+                                    yMin: 30,
+                                    yMax: 40,
+                                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                                    borderColor: 'rgba(54, 162, 235, 1)',
+                                    label: {
+                                        content: 'Obese',
+                                        enabled: true,
+                                        position: 'start',
+                                        backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                                        color: '#fff',
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'BMI',
+                                color: '#333'
+                            },
+                            ticks: {
+                                stepSize: 5,
+                                color: '#333',
+                            },
+                            min: 10,
+                            max: 40,
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date',
+                                color: '#333'
+                            },
+                            ticks: {
+                                color: '#333',
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        updateBmiChart();
+    });
+</script>
+
+
+<script src="js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>

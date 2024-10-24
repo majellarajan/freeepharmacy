@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+      <title>App</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="css/style.css">
+      <link rel="stylesheet" href="css/responsive.css">
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="css/owl.carousel.min.css">
+      <link rel="stylesheet" href="css/owl.theme.default.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   </head>
+   <body>
+    <div class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+           <div class="logo"><a href="index.html"><img width="48" height="48" src="https://img.icons8.com/doodle/48/clinic.png" alt="clinic"/></a></div>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                 <li class="nav-item active">
+                     <a class="nav-link" href="index.html">Home</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="health.html">Finders</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="medicine.html">Tracker</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="calculuaotr1.html">Calculate</a>
+                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="systemchecker.html">Symptoms</a>
+                  </li>
+              </li>
+              <li class="nav-item">
+               <a class="nav-link" href="progresstracker.html">Goals</a>
+               </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="contact.html">Learn</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="app.html">Mobile</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="login.html">Join</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#"><img src="images/search-icon.png"></a>
+                 </li>
+             </ul>
+           </div>
+        </nav>
+
+<div class="client_section layout_padding margin_90" style="background-color: #ffffff; padding: 60px 40px;">
+   <div class="container">
+      <div class="text-center animate-fade-in" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+         <div style="flex-grow: 1; text-align: center;">
+            <h1 class="client_taital" style="font-size: 3.2em; color: #000;">
+               <span style="color: #000;">Symptom</span> 
+               <span style="color: #1becde;">Checker</span> 
+           </h1>
+            <p class="client_text" style="font-size: 1.2em; color: #000000;">       
+                The FreePharmacy Symptom Checker provides you with quick access to healthcare insights right from your mobile device. Simply enter your symptoms, and receive tailored medication suggestions, potential conditions, and helpful health tips—ensuring you have the information you need at your fingertips. Our intuitive platform makes it effortless to manage your health on-the-go, empowering you to make informed decisions about your well-being.
+            </p>
+         </div>         
+      </div>
+
+    <div class="symptom-checker-form">
+        <form id="symptomForm" class="mb-4">
+            <div class="form-group">
+                <input type="text" id="symptomsInput" class="form-control" placeholder="Enter your symptoms separated by commas" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="transition: background-color 0.3s; cursor: pointer;">
+                Check Symptoms
+            </button>
+        </form>
+        <div id="loading" style="display: none; text-align: center;">
+            <div class="spinner" style="margin: 10px auto; width: 30px; height: 30px; border: 4px solid #1becde; border-top: 4px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            <p>Loading...</p>
+        </div>
+        <div id="prescription" class="medication-list mt-3"></div>
+    </div>
+   
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+   
+        .btn-primary {
+            background-color: #000000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+   
+        .btn-primary:hover {
+            background-color: #17b5c3;
+        }
+   
+        .form-control {
+            border: 1px solid #000000;
+            border-radius: 5px;
+            padding: 10px;
+            transition: border-color 0.3s;
+        }
+   
+        .form-control:focus {
+            border-color: #1becde;
+            box-shadow: 0 0 5px rgba(30, 144, 255, 0.5);
+        }
+   
+        .medication-list {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 4px 10px #126f69;
+        }
+    </style>
+   
+   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const symptomForm = document.getElementById('symptomForm');
+        const symptomsInput = document.getElementById('symptomsInput');
+        const prescriptionDiv = document.getElementById('prescription');
+        const loadingDiv = document.getElementById('loading');
+
+        const symptomToMedication = {
+            "cough": {
+                medications: ["Cough Syrup", "Honey", "Guaifenesin"],
+                conditions: {
+                    "Common Cold": "A viral infection that causes nasal congestion, sneezing, and coughing.",
+                    "Flu": "A contagious respiratory illness caused by influenza viruses, leading to fever, body aches, and fatigue.",
+                    "Allergies": "Reactions to allergens, such as pollen or dust, causing sneezing, itching, and coughing."
+                }
+            },
+            "fever": {
+                medications: ["Paracetamol", "Ibuprofen", "Aspirin"],
+                conditions: {
+                    "Flu": "A contagious respiratory illness characterized by high fever and body aches.",
+                    "Infection": "An invasion of the body by harmful pathogens, causing inflammation and fever.",
+                    "Heat Exhaustion": "A heat-related illness caused by excessive loss of water and salt, often leading to high body temperature."
+                }
+            },
+            "headache": {
+                medications: ["Aspirin", "Ibuprofen", "Naproxen"],
+                conditions: {
+                    "Migraine": "A severe, recurring headache often accompanied by nausea and sensitivity to light.",
+                    "Tension Headache": "A common type of headache characterized by a dull, aching pain and tightness around the forehead.",
+                    "Sinusitis": "Inflammation of the sinuses, causing pain and pressure in the face and head."
+                }
+            },
+            "stomach ache": {
+                medications: ["Antacids", "Pepto-Bismol", "Loperamide"],
+                conditions: {
+                    "Gastroenteritis": "An inflammation of the stomach and intestines, leading to diarrhea and vomiting.",
+                    "Indigestion": "Discomfort in the stomach after eating, often resulting in bloating and nausea.",
+                    "Food Poisoning": "Illness caused by consuming contaminated food, leading to stomach pain, diarrhea, and vomiting."
+                }
+            },
+            "nausea": {
+                medications: ["Antiemetics", "Ginger Tea", "Bismuth Subsalicylate"],
+                conditions: {
+                    "Motion Sickness": "A disturbance in the inner ear caused by repeated motion, leading to nausea and dizziness.",
+                    "Pregnancy": "Morning sickness is common in early pregnancy and may cause nausea and vomiting.",
+                    "Food Poisoning": "Caused by consuming contaminated food, often leading to nausea, vomiting, and stomach pain."
+                }
+            },
+            "sore throat": {
+                medications: ["Lozenges", "Saltwater Gargle", "Throat Spray"],
+                conditions: {
+                    "Strep Throat": "A bacterial infection causing inflammation and pain in the throat.",
+                    "Tonsillitis": "Inflammation of the tonsils, often resulting in a sore throat, difficulty swallowing, and fever.",
+                    "Common Cold": "A viral infection that affects the throat and respiratory system, leading to a sore throat."
+                }
+            },
+    "fatigue": {
+        medications: ["Caffeine", "Vitamin B12", "Iron Supplements"],
+        conditions: {
+            "Anemia": "A condition in which the blood doesn't have enough healthy red blood cells, causing tiredness.",
+            "Chronic Fatigue Syndrome": "A complex disorder characterized by extreme fatigue that doesn't improve with rest.",
+            "Sleep Apnea": "A sleep disorder that causes breathing to stop and start during sleep, leading to fatigue.",
+            "Hypothyroidism": "A condition where the thyroid gland doesn't produce enough hormones, resulting in fatigue.",
+            "Depression": "A mental health condition that can lead to persistent feelings of fatigue and low energy."
+        }
+    },
+    "shortness of breath": {
+        medications: ["Bronchodilators", "Inhalers", "Oxygen Therapy"],
+        conditions: {
+            "Asthma": "A chronic condition causing airway inflammation and difficulty breathing.",
+            "Chronic Obstructive Pulmonary Disease (COPD)": "A progressive lung disease that makes it hard to breathe.",
+            "Heart Failure": "A condition in which the heart doesn't pump blood as well as it should, leading to fluid buildup in the lungs.",
+            "Pneumonia": "An infection that inflames the air sacs in one or both lungs, causing difficulty breathing.",
+            "Pulmonary Embolism": "A blockage in one of the pulmonary arteries in the lungs, often due to blood clots."
+        }
+    },
+    "chills": {
+        medications: ["Paracetamol", "Ibuprofen", "Warm Fluids"],
+        conditions: {
+            "Flu": "A contagious respiratory illness that can cause chills along with fever and body aches.",
+            "Malaria": "A mosquito-borne disease that causes severe chills and fever.",
+            "Hypothermia": "A life-threatening condition that occurs when the body loses heat faster than it can produce it.",
+            "Infection": "Various infections can lead to chills as the body reacts to the pathogens.",
+            "Sepsis": "A life-threatening response to infection that can cause fever and chills."
+        }
+    },
+    "dizziness": {
+        medications: ["Meclizine", "Scopolamine", "Hydration"],
+        conditions: {
+            "Vertigo": "A sensation of spinning or dizziness often caused by inner ear problems.",
+            "Low Blood Pressure": "A condition where blood pressure is lower than normal, leading to dizziness.",
+            "Dehydration": "Lack of fluids can cause dizziness and lightheadedness.",
+            "Migraine": "Some individuals experience dizziness as a symptom of migraine headaches.",
+            "Anxiety Disorders": "Panic attacks and anxiety can lead to feelings of dizziness or lightheadedness."
+        }
+    },
+    "itchy skin": {
+        medications: ["Antihistamines", "Hydrocortisone Cream", "Moisturizers"],
+        conditions: {
+            "Allergic Reaction": "Reactions to allergens can cause skin irritation and itching.",
+            "Eczema": "A condition that makes skin red, inflamed, and itchy.",
+            "Psoriasis": "An autoimmune condition that causes rapid skin cell production, leading to red, itchy patches.",
+            "Dry Skin": "Lack of moisture in the skin can cause itching and flaking.",
+            "Contact Dermatitis": "Skin irritation resulting from contact with allergens or irritants."
+        }
+    }
+};
+
+        symptomForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const symptoms = symptomsInput.value.toLowerCase().split(',').map(s => s.trim());
+            prescriptionDiv.innerHTML = ''; 
+            loadingDiv.style.display = 'block'; 
+            
+            setTimeout(() => {
+                loadingDiv.style.display = 'none'; 
+                let found = false;
+
+                symptoms.forEach(symptom => {
+                    if (symptomToMedication[symptom]) {
+                        found = true;
+                        const { medications, conditions } = symptomToMedication[symptom];
+                        
+                        const conditionList = Object.keys(conditions).map(condition => 
+                            `<strong>${condition}:</strong> ${conditions[condition]}`
+                        ).join('<br>');
+                        
+                        const medicationList = medications.map(med => `<li>${med}</li>`).join('');
+                        
+                        prescriptionDiv.innerHTML += `
+                            <div class="medication-list">
+                                <h5><strong>For Symptom:</strong> ${symptom}</h5>
+                                <p><strong>Recommended Medications:</strong></p>
+                                <ul>${medicationList}</ul>
+                                <p><strong>Possible Conditions:</strong></p>
+                                <p>${conditionList}</p>
+                            </div>
+                        `;
+                    }
+                });
+                
+                if (!found) {
+                    prescriptionDiv.innerHTML = '<p>No suggestions found for the symptoms entered.</p>';
+                }
+            }, 2000); 
+        });
+    });
+   </script>
+</div>
+   </div>
+</div>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="js/plugin.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+</body>
+</html>
+

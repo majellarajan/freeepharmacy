@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Health Care Provider Finder</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/responsive.css">
+   <link rel="icon" href="images/fevicon.png" type="image/gif" />
+   <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+   <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+   <link rel="stylesheet" href="css/owl.carousel.min.css">
+   <link rel="stylesheet" href="css/owl.theme.default.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+   <style>
+
+.health_section {
+   background-color: #cfedf0;  
+   padding: 20px; 
+}
+
+
+
+#service_list {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 20px;  
+   margin: -10px;  
+}
+
+.service_box {
+   background-color: #c3eae7;  
+   border-radius: 8px; 
+   padding: 20px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   text-align: center;
+   height: 350px;  
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   box-sizing: border-box; 
+   overflow: hidden;  
+}
+
+
+.service_box img {
+   max-width: 100%;
+   height: 150px; 
+   object-fit: cover;
+   border-radius: 8px;
+   margin-bottom: 15px; 
+}
+
+
+.service_title {
+   font-size: 18px;
+   font-weight: bold;
+   margin: 15px 0 10px;
+}
+
+
+.service_description {
+   font-size: 14px;
+   margin-bottom: 10px;
+   height: 60px;  
+   overflow: hidden;  
+   text-overflow: ellipsis; 
+   display: -webkit-box;
+   -webkit-line-clamp: 3;  
+   -webkit-box-orient: vertical;
+}
+
+
+
+.service_location, .service_contact {
+   font-size: 12px;
+   color: #555;
+}
+
+
+ 
+.service_item {
+   flex: 1 1 calc(25% - 20px); 
+   max-width: calc(25% - 20px); 
+   box-sizing: border-box;  
+}
+
+
+ 
+@media (max-width: 992px) {
+   .service_item {
+       flex: 1 1 calc(33.333% - 20px);   
+       max-width: calc(33.333% - 20px);  
+   }
+}
+
+
+@media (max-width: 768px) {
+   .service_item {
+       flex: 1 1 calc(50% - 20px);  
+       max-width: calc(50% - 20px);  
+   }
+}
+
+
+@media (max-width: 576px) {
+   .service_item {
+       flex: 1 1 100%;  
+       max-width: 100%; 
+   }
+}
+
+
+
+.filter_controls {
+   margin-bottom: 20px;
+}
+
+
+.filter_controls label {
+   margin-right: 10px;
+}
+
+
+.filter_controls select {
+   padding: 5px;
+   border-radius: 5px;
+   border: 1px solid #ccc;
+}
+
+
+
+
+   </style>
+</head>
+<body>
+    <div class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+           <div class="logo"><a href="index.html"><img width="48" height="48" src="https://img.icons8.com/doodle/48/clinic.png" alt="clinic"/></a></div>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                 <li class="nav-item active">
+                     <a class="nav-link" href="index.html">Home</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="health.html">Finders</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="medicine.html">Tracker</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="calculuaotr1.html">Calculate</a>
+                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="systemchecker.html">Symptoms</a>
+                  </li>
+              </li>
+              <li class="nav-item">
+               <a class="nav-link" href="progresstracker.html">Goals</a>
+               </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="contact.html">Learn</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="app.html">Mobile</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="login.html">Join</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#"><img src="images/search-icon.png"></a>
+                 </li>
+             </ul>
+           </div>
+        </nav>
+   </head>
+   <body>
+<div class="client_section layout_padding margin_90" style="background-color: #ffffff; padding: 60px 40px;">
+   <div class="container">
+      <div class="text-center animate-fade-in" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+         <div style="flex-grow: 1; text-align: center;">
+            <h1 class="client_taital" style="font-size: 3.2em; color: #000;">
+               <span style="color: #000;">Afforable </span>
+               <span style="color: #1becde;">Health Care Services</span>
+           </h1>
+           <p class="health_text">Discover local clinics, pharmacies, and telehealth services to meet your health care needs. Our directory provides essential information to help you navigate and access affordable care.</p>
+           &nbsp;
+           &nbsp;
+           <div class="filter_controls">
+               <label for="service_filter">Filter by Type:</label>
+               <select id="service_filter">
+                   <option value="all">All Services</option>
+                   <option value="clinic">Local Clinics</option>
+                   <option value="pharmacy">Pharmacies</option>
+                   <option value="telehealth">Telehealth</option>
+               </select>
+           </div>
+<div id="service_list">
+   <div class="service_item" data-type="clinic">
+       <div class="service_box">
+           <img src="images/348s.jpg" alt="Venice Family Clinic">
+           <h3 class="service_title">Venice Family Clinic</h3>
+           <p class="service_description">Affordable health services for routine and emergency care.</p>
+           <p class="service_location">Location: 710 S Commonwealth Ave, Los Angeles, CA 90005</p>
+           <p class="service_contact">Contact: (310) 392-8636</p>
+           <p class="service_price">Price Range: $30 - $100</p>
+       </div>
+   </div>
+   <div class="service_item" data-type="pharmacy">
+       <div class="service_box">
+           <img src="images/download.jpg" alt="Costco Pharmacy">
+           <h3 class="service_title">Costco Pharmacy</h3>
+           <p class="service_description">Get affordable medications with a wide range of options.</p>
+           <p class="service_location">Location: Varies by location. Use the <a href="https://www.costco.com/warehouse-locations" target="_blank">Costco Store Locator</a> to find one near you.</p>
+           <p class="service_contact">Contact: Check local store for specific pharmacy phone number.</p>
+           <p class="service_price">Price Range: $10 - $50</p>
+       </div>
+   </div>
+   <div class="service_item" data-type="telehealth">
+       <div class="service_box">
+           <img src="images/download.png" alt="Teladoc">
+           <h3 class="service_title">Teladoc</h3>
+           <p class="service_description">Consult with professionals remotely for convenience.</p>
+           <p class="service_location">Available Online</p>
+           <p class="service_contact">Contact: 1-800-TELADOC (1-800-835-2362)</p>
+           <p class="service_price">Price Range: $40 - $90</p>
+       </div>
+   </div>
+   <div class="service_item" data-type="clinic">
+       <div class="service_box">
+           <img src="images/download-1.jpg" alt="Los Angeles County Department of Health Services">
+           <h3 class="service_title">Los Angeles County Department of Health Services</h3>
+           <p class="service_description">Comprehensive health care services at affordable rates.</p>
+           <p class="service_location">Location: 1000 S Wooster St, Los Angeles, CA 90035</p>
+           <p class="service_contact">Contact: (323) 933-1111</p>
+           <p class="service_price">Price Range: $50 - $150</p>
+       </div>
+   </div>
+   <div class="col-md-4 service_item" data-type="pharmacy">
+       <div class="service_box">
+           <img src="images/download-2.jpg" alt="Kroger Pharmacy">
+           <h3 class="service_title">Kroger Pharmacy</h3>
+           <p class="service_description">Wide range of prescription and over-the-counter medications.</p>
+           <p class="service_location">Location: Varies by location. Use the <a href="https://www.kroger.com/stores" target="_blank">Kroger Store Locator</a> to find one near you.</p>
+           <p class="service_contact">Contact: Check local store for specific pharmacy phone number.</p>
+           <p class="service_price">Price Range: $15 - $75</p>
+       </div>
+   </div>
+   <div class="col-md-4 service_item" data-type="telehealth">
+       <div class="service_box">
+           <img src="images/download-3.jpg" alt="Amwell">
+           <h3 class="service_title">Amwell</h3>
+           <p class="service_description">Access specialized care through online consultations.</p>
+           <p class="service_location">Available Online</p>
+           <p class="service_contact">Contact: 1-800-768-6046</p>
+           <p class="service_price">Price Range: $50 - $100</p>
+       </div>
+   </div>
+   <div class="col-md-4 service_item" data-type="clinic">
+       <div class="service_box">
+           <img src="images/download-4.jpg" alt="SFGH Community Health Center">
+           <h3 class="service_title">SFGH Community Health Center</h3>
+           <p class="service_description">Affordable health services with extended hours.</p>
+           <p class="service_location">Location: 1001 Potrero Ave, San Francisco, CA 94110</p>
+           <p class="service_contact">Contact: (415) 206-8000</p>
+           <p class="service_price">Price Range: $30 - $120</p>
+       </div>
+   </div>
+   <div class="col-md-4 service_item" data-type="pharmacy">
+       <div class="service_box">
+           <img src="images/download-5.jpg" alt="CVS Pharmacy">
+           <h3 class="service_title">CVS Pharmacy</h3>
+           <p class="service_description">Conveniently located with quick service.</p>
+           <p class="service_location">Location: Varies by location. Use the <a href="https://www.cvs.com/store-locator" target="_blank">CVS Store Locator</a> to find one near you.</p>
+           <p class="service_contact">Contact: Check local store for specific pharmacy phone number.</p>
+           <p class="service_price">Price Range: $20 - $80</p>
+       </div>
+   </div>
+   <div class="col-md-4 service_item" data-type="clinic">
+       <div class="service_box">
+           <img src="images/download-6.jpg" alt="Oakland Health Center">
+           <h3 class="service_title">Oakland Health Center</h3>
+           <p class="service_description">Providing quality care for all age groups.</p>
+           <p class="service_location">Location: 8201 International Blvd, Oakland, CA 94621</p>
+           <p class="service_contact">Contact: (510) 437-8500</p>
+           <p class="service_price">Price Range: $40 - $100</p>
+       </div>
+   </div>
+   <div class="col-md-4 service_item" data-type="pharmacy">
+       <div class="service_box">
+           <img src="images/download-7.jpg" alt="Albertsons Pharmacy">
+           <h3 class="service_title">Albertsons Pharmacy</h3>
+           <p class="service_description">Your one-stop shop for all medication needs.</p>
+           <p class="service_location">Location: Varies by location. Use the <a href="https://www.albertsons.com/find-stores" target="_blank">Albertsons Store Locator</a> to find one near you.</p>
+           <p class="service_contact">Contact: Check local store for specific pharmacy phone number.</p>
+           <p class="service_price">Price Range: $10 - $60</p>
+       </div>
+   </div>
+<div class="col-md-4 service_item" data-type="telehealth">
+   <div class="service_box">
+       <img src="images/download-8.jpg" alt="Doctor on Demand">
+       <h3 class="service_title">Doctor on Demand</h3>
+       <p class="service_description">Remote consultations with top specialists.</p>
+       <p class="service_location">Available Online</p>
+       <p class="service_contact">Contact: 1-800-997-6196</p>
+       <p class="service_price">Price Range: $50 - $100</p>
+   </div>
+</div>
+<div class="col-md-4 service_item" data-type="clinic">
+   <div class="service_box">
+       <img src="images/download-9.jpg" alt="Health Net - Community Clinics">
+       <h3 class="service_title">Health Net - Community Clinics</h3>
+       <p class="service_description">Walk-in services available for urgent care.</p>
+       <p class="service_location">Location: Varies by location. Use the <a href="https://www.healthnet.com/content/healthnet/en_us/about/health-care-providers/community-clinics.html" target="_blank">Health Net Clinic Locator</a> to find one near you.</p>
+       <p class="service_contact">Contact: (800) 675-6110</p>
+       <p class="service_price">Price Range: $40 - $120</p>
+   </div>
+</div>
+<div class="col-md-4 service_item" data-type="pharmacy">
+   <div class="service_box">
+       <img src="images/download-10.jpg" alt="Rite Aid">
+       <h3 class="service_title">Rite Aid</h3>
+       <p class="service_description">Expert pharmacists ready to assist with prescriptions.</p>
+       <p class="service_location">Location: Varies by location. Use the <a href="https://www.riteaid.com/store-locator" target="_blank">Rite Aid Store Locator</a> to find one near you.</p>
+       <p class="service_contact">Contact: Check local store for specific pharmacy phone number.</p>
+       <p class="service_price">Price Range: $15 - $60</p>
+   </div>
+</div>
+<div class="col-md-4 service_item" data-type="telehealth">
+   <div class="service_box">
+       <img src="images/download-11.jpg" alt="HealthTap">
+       <h3 class="service_title">HealthTap</h3>
+       <p class="service_description">Efficient and effective virtual health services.</p>
+       <p class="service_location">Available Online</p>
+       <p class="service_contact">Contact: 1-800-919-2345</p>
+       <p class="service_price">Price Range: $40 - $90</p>
+   </div>
+</div>
+<div class="col-md-4 service_item" data-type="urgent-care">
+    <div class="service_box">
+        <img src="images/download-12.jpg" alt="MedExpress">
+        <h3 class="service_title">MedExpress Urgent Care</h3>
+        <p class="service_description">Comprehensive urgent care for minor injuries and illnesses.</p>
+        <p class="service_location">Location: Varies. Use the <a href="https://www.medexpress.com/locations" target="_blank">MedExpress Location Finder</a> to find a clinic near you.</p>
+        <p class="service_contact">Contact: Check local clinic for specific contact information.</p>
+        <p class="service_price">Price Range: $75 - $200</p>
+    </div>
+</div>
+<div class="col-md-4 service_item" data-type="mental-health">
+    <div class="service_box">
+        <img src="images/download-13.jpg" alt="BetterHelp">
+        <h3 class="service_title">BetterHelp</h3>
+        <p class="service_description">Professional online therapy and counseling services.</p>
+        <p class="service_location">Available Online</p>
+        <p class="service_contact">Contact: Visit <a href="https://www.betterhelp.com" target="_blank">BetterHelp</a> for details.</p>
+        <p class="service_price">Price Range: $60 - $100 per session</p>
+    </div>
+</div>
+ <div class="col-md-4 service_item" data-type="optometry">
+    <div class="service_box">
+        <img src="images/download-13.jpg" alt="LensCrafters">
+        <h3 class="service_title">LensCrafters</h3>
+        <p class="service_description">Comprehensive eye exams and a wide range of eyewear.</p>
+        <p class="service_location">Location: Varies. Use the <a href="https://www.lenscrafters.com/find-a-store" target="_blank">LensCrafters Store Finder</a> to locate a store near you.</p>
+        <p class="service_contact">Contact: Check local store for phone number.</p>
+        <p class="service_price">Price Range: $50 - $200</p>
+    </div>
+</div>
+
+<div class="col-md-4 service_item" data-type="clinic">
+    <div class="service_box">
+        <img src="images/download-14.jpg" alt="CVS MinuteClinic">
+        <h3 class="service_title">CVS MinuteClinic</h3>
+        <p class="service_description">Convenient walk-in clinic offering basic medical care for minor injuries and illnesses.</p>
+        <p class="service_location">Location: Nationwide. Use the <a href="https://www.cvs.com/minuteclinic/clinic-locator" target="_blank">MinuteClinic Locator</a> to find a clinic near you.</p>
+        <p class="service_contact">Contact: Check local clinic for specific contact details.</p>
+        <p class="service_price">Price Range: $50 - $130</p>
+    </div>
+</div>
+
+<div class="col-md-4 service_item" data-type="pharmacy">
+    <div class="service_box">
+        <img src="images/download-2.png" alt="Walgreens Pharmacy">
+        <h3 class="service_title">Walgreens Pharmacy</h3>
+        <p class="service_description">Professional pharmacists to help manage your prescriptions and healthcare needs.</p>
+        <p class="service_location">Location: Nationwide. Use the <a href="https://www.walgreens.com/storelocator" target="_blank">Walgreens Store Locator</a> to find a pharmacy near you.</p>
+        <p class="service_contact">Contact: Individual pharmacy contact numbers vary by location.</p>
+        <p class="service_price">Price Range: $10 - $80</p>
+    </div>
+</div>
+
+<div class="col-md-4 service_item" data-type="telehealth">
+    <div class="service_box">
+        <img src="images/download.png" alt="Teladoc">
+        <h3 class="service_title">Teladoc</h3>
+        <p class="service_description">24/7 access to board-certified doctors for non-emergency care from anywhere.</p>
+        <p class="service_location">Available Online</p>
+        <p class="service_contact">Contact: 1-800-Teladoc or visit <a href="https://www.teladoc.com" target="_blank">Teladoc</a> for details.</p>
+        <p class="service_price">Price Range: $40 - $75</p>
+    </div>
+</div>
+
+<div class="col-md-4 service_item" data-type="clinic" data-price-range="$ - $$$">
+   <div class="service_box">
+       <img src="images/download-15.jpg" alt="Planned Parenthood">
+       <h3 class="service_title">Planned Parenthood</h3>
+       <p class="service_description">Health services for reproductive health, including exams and family planning.</p>
+       <p class="service_location">Location: Nationwide. Use the <a href="https://www.plannedparenthood.org/health-center" target="_blank">Planned Parenthood Locator</a> to find a clinic near you.</p>
+       <p class="service_contact">Contact: Check local clinic for specific contact details.</p>
+   </div>
+</div>
+
+
+
+<div class="col-md-4 service_item" data-type="pharmacy" data-price-range="$ - $$">
+   <div class="service_box">
+       <img src="images/download-2.jpg" alt="Kroger Pharmacy">
+       <h3 class="service_title">Kroger Pharmacy</h3>
+       <p class="service_description">Your go-to for prescription refills, immunizations, and medication management.</p>
+       <p class="service_location">Location: Nationwide. Use the <a href="https://www.kroger.com/stores/grocery" target="_blank">Kroger Store Locator</a> to find a pharmacy near you.</p>
+       <p class="service_contact">Contact: Check your local Kroger Pharmacy for details.</p>
+   </div>
+</div>
+
+
+
+<div class="col-md-4 service_item" data-type="telehealth" data-price-range="$ - $$$">
+   <div class="service_box">
+       <img src="images/download-3.jpg" alt="Amwell">
+       <h3 class="service_title">Amwell</h3>
+       <p class="service_description">Online doctor consultations for non-emergency medical issues.</p>
+       <p class="service_location">Available Online</p>
+       <p class="service_contact">Contact: Visit <a href="https://www.amwell.com" target="_blank">Amwell</a> for more information.</p>
+   </div>
+</div>
+
+
+
+<div class="col-md-4 service_item" data-type="clinic" data-price-range="$$$">
+   <div class="service_box">
+       <img src="images/download-3.jpg" alt="Cedars-Sinai Medical Center">
+       <h3 class="service_title">Cedars-Sinai Medical Center</h3>
+       <p class="service_description">World-class healthcare services in a range of specialties, including emergency and outpatient care.</p>
+       <p class="service_location">Location: 8700 Beverly Blvd, Los Angeles, CA 90048</p>
+       <p class="service_contact">Contact: (310) 423-3277 or visit <a href="https://www.cedars-sinai.org/" target="_blank">Cedars-Sinai</a> for more details.</p>
+   </div>
+</div>
+
+
+
+<div class="col-md-4 service_item" data-type="pharmacy" data-price-range="$ - $$">
+   <div class="service_box">
+       <img src="images/download-12.jpg" alt="UCLA Health Pharmacy">
+       <h3 class="service_title">UCLA Health Pharmacy</h3>
+       <p class="service_description">Providing prescription services and medication management as part of UCLA's renowned health system.</p>
+       <p class="service_location">Location: Multiple locations in Los Angeles. Use the <a href="https://www.uclahealth.org/find-a-pharmacy" target="_blank">UCLA Health Pharmacy Locator</a> to find a location near you.</p>
+       <p class="service_contact">Contact: (855) 522-5200</p>
+   </div>
+</div>
+
+
+
+<div class="col-md-4 service_item" data-type="telehealth" data-price-range="$$ - $$$">
+   <div class="service_box">
+       <img src="images/download.png" alt="Kaiser Permanente Telehealth">
+       <h3 class="service_title">Kaiser Permanente Telehealth</h3>
+       <p class="service_description">Virtual appointments with Kaiser Permanente's healthcare professionals, available for members in the LA area.</p>
+       <p class="service_location">Available Online for Kaiser Members</p>
+       <p class="service_contact">Contact: Visit <a href="https://healthy.kaiserpermanente.org/" target="_blank">Kaiser Permanente</a> for details.</p>
+   </div>
+</div>
+
+
+
+<div class="col-md-4 service_item" data-type="clinic" data-price-range="$ - $$">
+   <div class="service_box">
+       <img src="images/download-2.jpg" alt="LA Care Health Plan Community Clinic">
+       <h3 class="service_title">LA Care Health Plan Community Clinic</h3>
+       <p class="service_description">Offering affordable healthcare services for LA County residents.</p>
+       <p class="service_location">Location: 4245 Whittier Blvd, Los Angeles, CA 90023</p>
+       <p class="service_contact">Contact: (888) 839-9909 or visit <a href="https://www.lacare.org/" target="_blank">LA Care Health Plan</a> for more details.</p>
+   </div>
+</div>
+
+
+ 
+<div class="col-md-4 service_item" data-type="pharmacy" data-price-range="$">
+   <div class="service_box">
+       <img src="images/download-12.jpg" alt="CVS Pharmacy - Westwood">
+       <h3 class="service_title">CVS Pharmacy - Westwood</h3>
+       <p class="service_description">Convenient prescription services and immunizations, located in the heart of Westwood.</p>
+       <p class="service_location">Location: 1001 Gayley Ave, Los Angeles, CA 90024</p>
+       <p class="service_contact">Contact: (310) 208-1918 or visit <a href="https://www.cvs.com/store-locator/cvs-pharmacy-address/1001+Gayley+Ave-Los+Angeles-CA-90024/storeid=9522" target="_blank">CVS Westwood</a>.</p>
+   </div>
+</div>
+
+
+ 
+<div class="col-md-4 service_item" data-type="telehealth" data-price-range="$$$">
+   <div class="service_box">
+       <img src="images/download-11.jpg" alt="One Medical Telehealth">
+       <h3 class="service_title">One Medical Telehealth</h3>
+       <p class="service_description">Virtual primary care services available to One Medical members in Los Angeles.</p>
+       <p class="service_location">Available Online</p>
+       <p class="service_contact">Contact: Visit <a href="https://www.onemedical.com/" target="_blank">One Medical</a> for more information.</p>
+   </div>
+</div>
+
+
+
+<div class="col-md-4 service_item" data-type="clinic" data-price-range="$ - $$">
+   <div class="service_box">
+       <img src="images/download-7.jpg" alt="Venice Family Clinic">
+       <h3 class="service_title">Venice Family Clinic</h3>
+       <p class="service_description">Providing low-cost medical care to underserved communities in Los Angeles.</p>
+       <p class="service_location">Location: 604 Rose Ave, Venice, CA 90291</p>
+       <p class="service_contact">Contact: (310) 392-8636 or visit <a href="https://venicefamilyclinic.org/" target="_blank">Venice Family Clinic</a> for details.</p>
+   </div>
+</div>
+
+
+
+<div class="col-md-4 service_item" data-type="clinic" data-price-range="$$$">
+   <div class="service_box">
+       <img src="images/download-8.jpg" alt="Stanford Health Care">
+       <h3 class="service_title">Stanford Health Care</h3>
+       <p class="service_description">Offering cutting-edge medical care and treatments in multiple specialties, located in the Bay Area.</p>
+       <p class="service_location">Location: 300 Pasteur Dr, Stanford, CA 94305</p>
+       <p class="service_contact">Contact: (650) 723-4000 or visit <a href="https://stanfordhealthcare.org/" target="_blank">Stanford Health Care</a> for more information.</p>
+   </div>
+</div>
+
+
+
+<div class="col-md-4 service_item" data-type="telehealth" data-price-range="$$">
+   <div class="service_box">
+       <img src="images/download-9.jpg" alt="Sutter Health Telehealth">
+       <h3 class="service_title">Sutter Health Telehealth</h3>
+       <p class="service_description">Virtual care appointments
+       </div>
+   </div>
+
+
+
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+      
+     function filterServices() {
+         var filterValue = document.getElementById('service_filter').value;
+         var serviceItems = document.querySelectorAll('.service_item');
+
+
+         serviceItems.forEach(function(item) {
+             if (filterValue === 'all' || item.getAttribute('data-type') === filterValue) {
+                 item.style.display = 'block';  
+             } else {
+                 item.style.display = 'none';  
+             }
+         });
+     }
+
+
+ 
+     document.getElementById('service_filter').addEventListener('change', filterServices);
+
+
+ 
+     filterServices();
+ });
+</script>

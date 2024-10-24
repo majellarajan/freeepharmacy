@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <title>FreePharmacy - Medicine Tracker</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .tracker {
+            width: 60%;
+            padding: 20px;
+            background-color: #cfedf0;;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar {
+            width: 35%;
+            margin-left: 20px;
+            padding: 20px;
+            background-color: #cfedf0;;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .medication-list {
+            margin-top: 20px;
+        }
+
+        .medication-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .medication-item button {
+            background-color: #f44336;
+            border: none;
+            color: rgb(255, 255, 255);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .medication-item button:hover {
+            background-color: #e53935;
+        }
+
+        .highlight {
+            background-color: #cfedf0;;
+        }
+
+        .calendar-day {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            margin: 2px;
+            cursor: pointer;
+            position: relative;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .calendar-day:hover {
+            background-color: #c3f2f9;
+        }
+
+        #reminder-alert,
+        #interaction-warning {
+            margin: 20px 0;
+            display: none;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        #reminder-alert {
+            background-color: #dff0d8;
+            color: #3c763d;
+        }
+
+        #interaction-warning {
+            background-color: #f2dede;
+            color: #a94442;
+        }
+
+        .drug-warning {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #cfedf0;;
+            border-radius: 5px;
+        }
+
+        .edit-btn {
+            background-color: #ff9800;
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .edit-btn:hover {
+            background-color: #fb8c00;
+        }
+
+        .health_taital {
+                
+            }
+            .health_taital span.affordable {
+                color: #17d0c0;
+            }
+
+            .btn-primary {
+        background-color: black;  
+        border: none;
+        padding: 10px 20px;
+        font-size: 1em;
+        color: #fff;  
+        border-radius: 5px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #333;  
+}
+
+#state-laws {
+    display: flex;
+    flex-direction: column;
+    align-items: center;  
+    margin: 20px 0; 
+    padding: 20px; 
+    border-radius: 8px;  
+    background-color: #f4f4f4;  }
+
+#state-laws h2 {
+    margin-bottom: 10px;  
+}
+
+#state-laws label {
+    margin-bottom: 5px;  
+}
+
+#state-select {
+    margin-bottom: 15px;  
+    padding: 8px;  
+    border: 1px solid #aaa;  
+    border-radius: 4px; 
+    font-size: 16px;  
+}
+
+#laws-info {
+    margin-top: 10px; 
+    padding: 10px;  
+    border: 1px solid #aaa;  
+    border-radius: 4px; 
+    background-color: #fff; 
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="header_section">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+           <div class="logo"><a href="index.html"><img width="48" height="48" src="https://img.icons8.com/doodle/48/clinic.png" alt="clinic"/></a></div>
+           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+           </button>
+           <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                 <li class="nav-item active">
+                     <a class="nav-link" href="index.html">Home</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="health.html">Finders</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="medicine.html">Tracker</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="calculuaotr1.html">Calculate</a>
+                 </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="systemchecker.html">Symptoms</a>
+                  </li>
+              </li>
+              <li class="nav-item">
+               <a class="nav-link" href="progresstracker.html">Goals</a>
+               </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="contact.html">Learn</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="app.html">Mobile</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="login.html">Join</a>
+                 </li>
+                 <li class="nav-item">
+                     <a class="nav-link" href="#"><img src="images/search-icon.png"></a>
+                 </li>
+             </ul>
+           </div>
+        </nav>
+    </div>
+    </section>
+    <div class="container">
+        <div class="tracker">
+            <h1 class="client_taital" style="font-size: 3.2em; color: #000;">
+                <span style="color: #000;">Medicine</span>
+                <span style="color: #1becde;">Tracker</span>
+            </h1> 
+            <form id="medicationForm">
+                <div class="form-group">
+                    <input type="text" id="medicineName" class="form-control" placeholder="Medicine Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="dosage" class="form-control" placeholder="Dosage (e.g., 2 pills)" required>
+                </div>
+                <div class="form-group">
+                    <input type="time" id="time" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="date" id="date" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Medication</button>
+            </form>
+
+            <div id="interaction-warning" class="alert alert-warning" style="display: none;"></div>
+            <div id="medicationList" class="medication-list mt-3"></div>
+            <div id="reminder-alert"></div>
+        </div>
+
+        <div id="calendar" class="calendar">
+            <h2>Calendar</h2>
+        </div>
+    </div>
+
+    <div class="drug-warning" id="drugWarnings" style="display: none;">
+        <strong>Drug Interactions Warning:</strong>
+        <p id="drugInteractionList"></p>
+    </div>
+
+    <section id="state-laws">
+        <h1 class="client_taital" style="font-size: 3.2em; color: #000;">
+            <span style="color: #000;">State Laws Regarding</span>
+            <span style="color: #1becde;">Medicine</span>
+        </h1> 
+        <label for="state-select">Choose a state:</label>
+        <select id="state-select">
+            <option value="">Select a state</option>
+            <option value="AL">Alabama</option>
+            <option value="AK">Alaska</option>
+            <option value="AZ">Arizona</option>
+            <option value="AR">Arkansas</option>
+            <option value="CA">California</option>
+            <option value="CO">Colorado</option>
+            <option value="CT">Connecticut</option>
+            <option value="DE">Delaware</option>
+            <option value="DC">District of Columbia</option>
+            <option value="FL">Florida</option>
+            <option value="GA">Georgia</option>
+            <option value="HI">Hawaii</option>
+            <option value="ID">Idaho</option>
+            <option value="IL">Illinois</option>
+            <option value="IN">Indiana</option>
+            <option value="IA">Iowa</option>
+            <option value="KS">Kansas</option>
+            <option value="KY">Kentucky</option>
+            <option value="LA">Louisiana</option>
+            <option value="ME">Maine</option>
+            <option value="MD">Maryland</option>
+            <option value="MA">Massachusetts</option>
+            <option value="MI">Michigan</option>
+            <option value="MN">Minnesota</option>
+            <option value="MS">Mississippi</option>
+            <option value="MO">Missouri</option>
+            <option value="MT">Montana</option>
+            <option value="NE">Nebraska</option>
+            <option value="NV">Nevada</option>
+            <option value="NH">New Hampshire</option>
+            <option value="NJ">New Jersey</option>
+            <option value="NM">New Mexico</option>
+            <option value="NY">New York</option>
+            <option value="NC">North Carolina</option>
+            <option value="ND">North Dakota</option>
+            <option value="OH">Ohio</option>
+            <option value="OK">Oklahoma</option>
+            <option value="OR">Oregon</option>
+            <option value="PA">Pennsylvania</option>
+            <option value="RI">Rhode Island</option>
+            <option value="SC">South Carolina</option>
+            <option value="SD">South Dakota</option>
+            <option value="TN">Tennessee</option>
+            <option value="TX">Texas</option>
+            <option value="UT">Utah</option>
+            <option value="VT">Vermont</option>
+            <option value="VA">Virginia</option>
+            <option value="WA">Washington</option>
+            <option value="WV">West Virginia</option>
+            <option value="WI">Wisconsin</option>
+            <option value="WY">Wyoming</option>
+        </select>
+        
+        <div id="laws-info">
+        </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('medicationForm');
+            const medicineNameInput = document.getElementById('medicineName');
+            const dosageInput = document.getElementById('dosage');
+            const timeInput = document.getElementById('time');
+            const dateInput = document.getElementById('date');
+            const medicationList = document.getElementById('medicationList');
+            const calendar = document.getElementById('calendar');
+            const alertDiv = document.getElementById('reminder-alert');
+            const interactionWarning = document.getElementById('interaction-warning');
+            const drugWarningsDiv = document.getElementById('drugWarnings');
+            const drugInteractionList = document.getElementById('drugInteractionList');
+
+            let medications = JSON.parse(localStorage.getItem('medications')) || [];
+
+            const drugInteractions = {
+                "Aspirin": ["Ibuprofen", "Warfarin"],
+                "Ibuprofen": ["Aspirin", "Naproxen"],
+                "Warfarin": ["Aspirin"],
+            };
+
+            function renderMedications() {
+                medicationList.innerHTML = '';
+                medications.forEach((med, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'medication-item';
+                    item.innerHTML = `
+                        <span>${med.name} - ${med.dosage} at ${med.time} on ${med.date}</span>
+                        <button onclick="removeMedication(${index})">Remove</button>
+                        <button class="edit-btn" onclick="editMedication(${index})">Edit</button>
+                    `;
+                    medicationList.appendChild(item);
+                });
+                checkForInteractions();
+                localStorage.setItem('medications', JSON.stringify(medications));
+            }
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newMedication = {
+                    name: medicineNameInput.value,
+                    dosage: dosageInput.value,
+                    time: timeInput.value,
+                    date: dateInput.value,
+                };
+
+                medications.push(newMedication);
+                renderMedications();
+                medicineNameInput.value = '';
+                dosageInput.value = '';
+                timeInput.value = '';
+                dateInput.value = '';
+                setNotification(newMedication);
+            });
+
+            window.removeMedication = (index) => {
+                medications.splice(index, 1);
+                renderMedications();
+            };
+
+            window.editMedication = (index) => {
+                const med = medications[index];
+                medicineNameInput.value = med.name;
+                dosageInput.value = med.dosage;
+                timeInput.value = med.time;
+                dateInput.value = med.date;
+                removeMedication(index);  
+            };
+
+            function checkForInteractions() {
+                interactionWarning.style.display = 'none';
+                drugWarningsDiv.style.display = 'none';
+                const warningDrugs = [];
+
+                medications.forEach(med => {
+                    const interactions = drugInteractions[med.name];
+                    if (interactions) {
+                        warningDrugs.push(...interactions);
+                    }
+                });
+
+                if (warningDrugs.length > 0) {
+                    interactionWarning.style.display = 'block';
+                    interactionWarning.innerHTML = '<strong>Warning:</strong> Possible drug interactions detected!';
+                    drugWarningsDiv.style.display = 'block';
+                    drugInteractionList.innerHTML = Array.from(new Set(warningDrugs)).join(', ');
+                }
+            }
+
+            function createCalendar() {
+                const date = new Date();
+                const month = date.getMonth();
+                const year = date.getFullYear();
+
+                calendar.innerHTML = `<h2>${date.toLocaleString('default', { month: 'long' })} ${year}</h2>`;
+                const firstDay = new Date(year, month, 1).getDay();
+                const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+                const calendarGrid = document.createElement('div');
+                calendarGrid.style.display = 'grid';
+                calendarGrid.style.gridTemplateColumns = 'repeat(7, 1fr)';
+                calendarGrid.style.gap = '5px';
+                calendarGrid.style.marginTop = '10px';
+
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyCell = document.createElement('div');
+                    calendarGrid.appendChild(emptyCell);
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayCell = document.createElement('div');
+                    dayCell.className = 'calendar-day';
+                    dayCell.innerText = day;
+
+                    medications.forEach(med => {
+                        const medDate = new Date(med.date);
+                        if (medDate.getDate() === day && medDate.getMonth() === month && medDate.getFullYear() === year) {
+                            dayCell.classList.add('highlight');
+                        }
+                    });
+
+                    calendarGrid.appendChild(dayCell);
+                }
+
+                calendar.appendChild(calendarGrid);
+            }
+
+            function setNotification(med) {
+                const medTime = new Date(`${med.date}T${med.time}`);
+                const currentTime = new Date();
+
+                if (medTime > currentTime) {
+                    const timeout = medTime - currentTime;
+                    setTimeout(() => {
+                        alert(`Time to take your medication: ${med.name}`);
+                        playNotificationSound(); 
+                        if (Notification.permission === 'granted') {
+                            new Notification(`Time to take your medication: ${med.name}`);
+                        }
+                    }, timeout);
+                }
+            }
+
+            function playNotificationSound() {
+                const audio = new Audio('japen-eas-alarm-1945-249123.mp3');  
+                audio.play().catch((error) => {
+                    console.error("Error playing sound:", error);
+                });
+            }
+
+            createCalendar();
+            renderMedications();
+
+            if (Notification.permission !== "granted") {
+                Notification.requestPermission();
+            }
+document.getElementById('state-select').addEventListener('change', function() {
+    const state = this.value;
+    const lawsInfo = document.getElementById('laws-info');
+    
+     lawsInfo.innerHTML = '';
+
+    if (state) {
+     const stateLaws = {
+        AL: "Alabama law regulates the sale of prescription medications and mandates consultations for new medications.",
+        AK: "Alaska law allows pharmacists to administer vaccines and has specific guidelines for prescription drugs.",
+        AZ: "Arizona law permits the prescribing of certain medications by nurse practitioners.",
+        AR: "Arkansas law has strict guidelines for prescription drug monitoring programs.",
+        CA: "California law requires a prescription for certain medications and has specific regulations on refills.",
+        CO: "Colorado law allows for the prescribing of medical marijuana under specific conditions.",
+        CT: "Connecticut law mandates that pharmacists provide counseling for new prescriptions.",
+        DE: "Delaware law requires a prescription for controlled substances and regulates their distribution.",
+        DC: "District of Columbia law permits the use of medical marijuana under regulated conditions.",
+        FL: "Florida law has strict regulations regarding the distribution of opioids.",
+        GA: "Georgia law allows for a 30-day supply of medication to be dispensed without a prescription refill.",
+        HI: "Hawaii law requires a prescription for controlled substances and has guidelines for their distribution.",
+        ID: "Idaho law allows pharmacists to prescribe certain medications under collaborative practice agreements.",
+        IL: "Illinois law allows pharmacists to refuse to fill prescriptions based on their ethical beliefs.",
+        IN: "Indiana law mandates electronic prescriptions for controlled substances.",
+        IA: "Iowa law regulates the sale of pseudoephedrine and requires identification for purchases.",
+        KS: "Kansas law permits pharmacists to provide medication therapy management services.",
+        KY: "Kentucky law requires that all prescriptions for controlled substances be electronically prescribed.",
+        LA: "Louisiana law regulates the sale of certain medications and mandates consultation for new prescriptions.",
+        ME: "Maine law allows pharmacists to dispense emergency contraceptives without a prescription.",
+        MD: "Maryland law requires a prescription for controlled substances and regulates their distribution.",
+        MA: "Massachusetts law mandates that pharmacists provide medication counseling for new prescriptions.",
+        MI: "Michigan law requires prescriptions for controlled substances to be transmitted electronically.",
+        MN: "Minnesota law allows for prescription delivery services under specific conditions.",
+        MS: "Mississippi law regulates the sale of prescription medications and mandates consultations for new medications.",
+        MO: "Missouri law has specific guidelines for the compounding of medications by pharmacies.",
+        MT: "Montana law allows pharmacists to prescribe certain medications under collaborative practice agreements.",
+        NE: "Nebraska law requires that all prescriptions for controlled substances be electronically prescribed.",
+        NV: "Nevada law permits the prescribing of medical marijuana under regulated conditions.",
+        NH: "New Hampshire law mandates counseling for new prescriptions provided by pharmacists.",
+        NJ: "New Jersey law allows for a 90-day supply of medication to be dispensed at once.",
+        NM: "New Mexico law allows nurse practitioners to prescribe controlled substances under specific conditions.",
+        NY: "New York law mandates electronic prescriptions for controlled substances.",
+        NC: "North Carolina law regulates the sale of certain medications and requires consultations for new prescriptions.",
+        ND: "North Dakota law allows for pharmacists to prescribe certain medications under collaborative practice agreements.",
+        OH: "Ohio law requires all prescriptions for controlled substances to be electronically prescribed.",
+        OK: "Oklahoma law mandates that pharmacists provide counseling for new prescriptions.",
+        OR: "Oregon law allows for the prescribing of medical marijuana under specific conditions.",
+        PA: "Pennsylvania law regulates the sale of certain medications and requires consultations for new prescriptions.",
+        RI: "Rhode Island law mandates that all prescriptions for controlled substances be electronically prescribed.",
+        SC: "South Carolina law allows for a 30-day supply of medication to be dispensed without a prescription refill.",
+        SD: "South Dakota law permits pharmacists to provide medication therapy management services.",
+        TN: "Tennessee law has specific guidelines for the distribution of controlled substances.",
+        TX: "Texas law allows for a 90-day supply of medication to be dispensed at once.",
+        UT: "Utah law requires all prescriptions for controlled substances to be electronically prescribed.",
+        VT: "Vermont law allows for the prescribing of medical marijuana under regulated conditions.",
+        VA: "Virginia law mandates that pharmacists provide counseling for new prescriptions.",
+        WA: "Washington law requires a prescription for controlled substances and has guidelines for their distribution.",
+        WV: "West Virginia law regulates the sale of certain medications and mandates consultations for new prescriptions.",
+        WI: "Wisconsin law allows pharmacists to administer vaccines and has specific guidelines for prescription drugs.",
+        WY: "Wyoming law allows for a 30-day supply of medication to be dispensed without a prescription refill."
+    };
+    
+
+        lawsInfo.innerHTML = stateLaws[state] || "No information available for this state.";
+    }
+});
+
+        });
+    </script>
+</body>
+</html>
